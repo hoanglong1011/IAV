@@ -27,6 +27,8 @@ class Ca {
                 .input('cuahang_id', sql.VarChar, this.cuahang_id)
                 .query(`INSERT INTO ${name}(id, name, date, start, closed, trangthai, cuahang_id) 
                         VALUES (@id, @name, @date, @start, @closed, @trangthai, @cuahang_id)`);
+                
+                pool.close();
             })
             .catch(err => console.log(err));
     }
@@ -42,6 +44,8 @@ class Ca {
                 .input('trangthai', sql.Int, parseInt(this.trangthai))
                 .query(`UPDATE ${name} SET [end] = @end, closed = @closed
                         WHERE id = @id AND cuahang_id = @cuahang_id AND trangthai = @trangthai`);
+                
+                pool.close();
             })
             .catch(err => console.log(err));
     }

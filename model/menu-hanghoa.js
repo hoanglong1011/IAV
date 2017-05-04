@@ -35,6 +35,8 @@ class Menu_HangHoa {
                             price, type, trangthai, cuahang_id) 
                         VALUES (@id, @menu_id, @group_id, @goods_id, @goods_name, @unit, @price, 
                             @type, @trangthai, @cuahang_id)`);
+                
+                pool.close();
             })
             .catch(err => console.log(err));
     }
@@ -53,6 +55,8 @@ class Menu_HangHoa {
                 .query(`UPDATE ${name} SET unit = @unit, price = @price 
                         WHERE menu_id = @menu_id AND group_id = @group_id AND goods_id = @goods_id AND 
                                 cuahang_id = @cuahang_id AND trangthai = @trangthai`);
+                
+                pool.close();
             })
             .catch(err => console.log(err));
     }
@@ -69,6 +73,8 @@ class Menu_HangHoa {
                 .query(`UPDATE ${name} SET trangthai = @trangthai 
                         WHERE menu_id = @menu_id AND group_id = @group_id AND goods_id = @goods_id AND 
                                 cuahang_id = @cuahang_id`);
+                
+                pool.close();
             })
             .catch(err => console.log(err));
     }
@@ -82,6 +88,8 @@ class Menu_HangHoa {
                 .input('cuahang_id', sql.VarChar, this.cuahang_id)
                 .query(`UPDATE ${name} SET trangthai = @trangthai 
                         WHERE menu_id = @menu_id AND cuahang_id = @cuahang_id`);
+                
+                pool.close();
             })
             .catch(err => console.log(err));
     }

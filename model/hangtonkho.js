@@ -40,6 +40,8 @@ class HangTonKho {
                             quantity_c, quantity_tt, ware_id, ware_name, trangthai, cuahang_id) 
                         VALUES (@id, @date, @nvl_id, @nvl_name, @quantity_t, @quantity_n, 
                             @quantity_r, @quantity_c, @quantity_tt, @ware_id, @ware_name, @trangthai, @cuahang_id)`);
+                
+                pool.close();
             })
             .catch(err => console.log(err));
     }
@@ -61,6 +63,8 @@ class HangTonKho {
                             quantity_c = @quantity_c, quantity_tt = @quantity_tt 
                         WHERE date = @date AND nvl_id = @nvl_id AND 
                             cuahang_id = @cuahang_id AND trangthai = @trangthai`);
+                
+                pool.close();
             })
             .catch(err => console.log(err));
     }

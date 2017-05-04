@@ -48,6 +48,8 @@ class DoanhThu {
                             phuphi, cuahang_id, cuahang_name, ngay, ca, trangthai) 
                         VALUES (@id, @sobill, @sokhach, @doanhso, @doanhthu, @mon, @loai, @bill, 
                             @customer, @vat, @phuphi, @cuahang_id, @cuahang_name, @ngay, @ca, @trangthai)`);
+                
+                pool.close();
             })
             .catch(err => console.log(err));
     }
@@ -73,6 +75,8 @@ class DoanhThu {
                             doanhthu = @doanhthu, mon = @mon, loai = @loai, bill = @bill, 
                             customer = @cusomer, vat = @vat, phuphi = @phuphi
                         WHERE id = @id AND cuahang_id = @cuahang_id AND trangthai = @trangthai`);
+                
+                pool.close();
             })
             .catch(err => console.log(err));
     }

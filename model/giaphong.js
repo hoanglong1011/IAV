@@ -32,6 +32,8 @@ class DoanhThu {
                 .input('cuahang_id', sql.VarChar, this.cuahang_id)
                 .query(`INSERT INTO ${name}(id, group_id, day, name, [begin], [end], normal, special, trangthai, cuahang_id) 
                         VALUES (@id, @group_id, @day, @name, @begin, @end, @normal, @special, @trangthai, @cuahang_id)`);
+                
+                pool.close();
             })
             .catch(err => console.log(err));
     }
@@ -53,6 +55,8 @@ class DoanhThu {
                 .query(`UPDATE ${name} SET group_id = @group_id, day = @day, name = @name, [begin] = @begin, [end] = @end, 
                             normal = @normal, special = @special
                         WHERE id = @id AND cuahang_id = @cuahang_id AND trangthai = @trangthai`);
+                
+                pool.close();
             })
             .catch(err => console.log(err));
     }
